@@ -10,5 +10,5 @@
 // used in client-side code. Row Level Security (set up per the
 // SETUP.md instructions) is what keeps the data safe.
 
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL_HERE";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY_HERE";
+const SUPABASE_URL = "https://lsbxfnyqtkttwlgwufvn.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzYnhmbnlxdGt0dHdsZ3d1ZnZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1Mjk5NzMsImV4cCI6MjEwMzEwNTk3M30.emKTYrGCTDi3OaSgDCQPPTh--760f3XMIf6xnShg1X8";
