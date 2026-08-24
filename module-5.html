@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 5: Brakes, Suspension & Safety — Ignition</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="../index.html" class="brand"><span class="brand-spark"></span> Ignition</a>
+    <div class="nav-links"><a href="../index.html">All modules</a></div>
+  </div>
+</nav>
+
+<header class="module-header">
+  <div class="wrap">
+    <div class="module-crumb"><a href="../index.html">Modules</a> / Module 5 of 6</div>
+    <h1>Brakes, Suspension &amp; Safety</h1>
+    <p class="tagline">How a two-ton car stops on command, and why "crumpling" in a crash is actually the point.</p>
+  </div>
+</header>
+
+<main class="lesson">
+  <div class="wrap">
+
+    <h2>How Brakes Actually Stop a Car</h2>
+    <p>Brakes don't magically stop a car — they convert the car's motion into heat through friction. When you press the brake pedal, brake pads squeeze tightly against a spinning metal disc attached to each wheel. That squeezing friction slows the wheel's spin, and the tires' grip on the road does the rest, slowing the whole car.</p>
+
+    <div class="callout">
+      <span class="callout-label">Where does the energy go?</span>
+      <p>All the energy of a moving car has to go somewhere when it stops. Brakes convert it into heat — which is why brake discs can get hot enough to glow after hard braking on a mountain road.</p>
+    </div>
+
+    <h2>Suspension: Absorbing the Bumps</h2>
+    <p>Every road has small bumps, dips, and cracks. Without suspension, every one of those bumps would jolt straight into the passengers and could even bounce the tires off the ground momentarily, losing grip. A car's <strong>suspension</strong> — springs and shock absorbers at each wheel — lets each wheel move up and down independently, soaking up bumps while keeping the car's body level and the tires pressed to the road.</p>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 640 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .s { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #8A8477; }
+          </style>
+        </defs>
+        <line x1="20" y1="150" x2="620" y2="150" stroke="#8A8477" stroke-width="2"/>
+        <path d="M20 150 Q 120 150 160 110 Q 200 150 620 150" stroke="#8A8477" stroke-width="2" fill="none"/>
+        <rect x="220" y="55" width="200" height="30" rx="6" fill="#302D27" stroke="#F3EFE6" stroke-width="1.5"/>
+        <line x1="250" y1="85" x2="250" y2="110" stroke="#F2A33C" stroke-width="4"/>
+        <path d="M245 88 L 255 92 L 245 96 L 255 100 L 245 104" stroke="#F2A33C" stroke-width="2" fill="none"/>
+        <circle cx="250" cy="130" r="20" fill="#26241F" stroke="#8A8477" stroke-width="2"/>
+        <line x1="390" y1="85" x2="390" y2="110" stroke="#4A9B8E" stroke-width="4"/>
+        <circle cx="390" cy="130" r="20" fill="#26241F" stroke="#8A8477" stroke-width="2"/>
+        <text x="320" y="35" text-anchor="middle" class="s">car body stays level even as the road dips</text>
+      </svg>
+      <p class="diagram-caption">The springs compress and extend independently at each wheel, absorbing bumps in the road.</p>
+    </div>
+
+    <h2>Crumple Zones: Designed to Break</h2>
+    <p>This one surprises most people: parts of a car are intentionally designed to crumple and deform in a crash. That's not a flaw — it's a safety feature. A crash involves a huge amount of energy that has to go somewhere. If the car's frame were perfectly rigid, all of that energy would transfer directly to the passengers. Instead, the front and rear sections are engineered to crumple in a controlled way, absorbing the crash energy before it reaches the passenger cabin — which is built to stay as rigid as possible.</p>
+
+    <div class="callout">
+      <span class="callout-label">Two zones, two jobs</span>
+      <p><strong>Crumple zones</strong> (front and rear) are meant to deform and absorb energy. The <strong>passenger cabin</strong> is built as a rigid "safety cage" that resists crushing, protecting the people inside while the crumple zones do the absorbing around them.</p>
+    </div>
+
+    <div class="activity-box">
+      <div class="activity-label">✏️ Try this — no equipment needed</div>
+      <p>Take two pieces of paper. Crumple one into a ball and drop it from shoulder height onto a table — notice how gently it lands. Drop a flat, uncrumpled piece of paper the same way. Which one "absorbs" the fall more gently? Write one sentence connecting this to how crumple zones work in a real crash.</p>
+    </div>
+
+  </div>
+</main>
+
+<section class="quiz-section">
+  <div class="wrap">
+    <div class="quiz-header"><h2>Quick Check</h2></div>
+    <p class="quiz-sub">4 questions. Takes about 2 minutes.</p>
+    <div id="quiz-app"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="module-footer-nav">
+    <a href="module-4.html">← Why Shape Matters</a>
+    <a href="module-6.html">Next: Design Challenge →</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script>
+  const QUIZ_DATA = {
+    moduleId: "module-5",
+    moduleTitle: "Brakes, Suspension & Safety",
+    questions: [
+      {
+        text: "How do brakes actually stop a car?",
+        options: [
+          "By reversing the engine's spin",
+          "By converting the car's motion into heat through friction",
+          "By cutting off fuel to the engine",
+          "By deflating the tires"
+        ],
+        correct: 1,
+        explain: "Brake pads squeeze against a spinning disc, and that friction converts the car's motion into heat, slowing it down."
+      },
+      {
+        text: "What is the main job of a car's suspension?",
+        options: [
+          "To make the car go faster",
+          "To let each wheel absorb bumps independently while keeping the car level",
+          "To store electrical power",
+          "To cool down the brakes"
+        ],
+        correct: 1,
+        explain: "Suspension (springs and shock absorbers) lets each wheel move independently, absorbing bumps while keeping the tires gripping the road."
+      },
+      {
+        text: "Why are crumple zones intentionally designed to deform in a crash?",
+        options: [
+          "It's a manufacturing defect that engineers haven't fixed",
+          "To absorb crash energy before it reaches the passenger cabin",
+          "To make the car lighter",
+          "To reduce the cost of manufacturing"
+        ],
+        correct: 1,
+        explain: "Crumple zones absorb crash energy in a controlled way, protecting the rigid passenger cabin and the people inside."
+      },
+      {
+        text: "What's different about the passenger cabin compared to the crumple zones?",
+        options: [
+          "It's designed to crumple even more than the crumple zones",
+          "It's built to stay as rigid as possible, resisting crushing",
+          "It has no special design at all",
+          "It's designed to detach during a crash"
+        ],
+        correct: 1,
+        explain: "The passenger cabin is a rigid \"safety cage\" meant to resist crushing, while the zones around it absorb the impact energy."
+      }
+    ]
+  };
+</script>
+<script src="../quiz.js"></script>
+
+</body>
+</html>

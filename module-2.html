@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 2: The Car's Nervous System — Ignition</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="../index.html" class="brand"><span class="brand-spark"></span> Ignition</a>
+    <div class="nav-links"><a href="../index.html">All modules</a></div>
+  </div>
+</nav>
+
+<header class="module-header">
+  <div class="wrap">
+    <div class="module-crumb"><a href="../index.html">Modules</a> / Module 2 of 6</div>
+    <h1>The Car's Nervous System</h1>
+    <p class="tagline">How the battery, alternator, and starter work together every single time you turn the key.</p>
+  </div>
+</header>
+
+<main class="lesson">
+  <div class="wrap">
+
+    <h2>The Big Idea</h2>
+    <p>A car's electrical system is a lot like your own nervous system — it's a network that sends power and signals everywhere they're needed, all at once, without you thinking about it. Lights, radio, sensors, the engine's spark plugs — all of it runs on electricity flowing through the car.</p>
+
+    <h2>Three Key Parts</h2>
+    <p><strong>The battery</strong> stores electricity, like a bucket holding water. It doesn't make electricity — it just stores it, ready to use.</p>
+    <p><strong>The starter motor</strong> is a small, powerful electric motor whose only job is to give the engine its first spin when you turn the key — like giving a bike a push to get it rolling before you start pedaling.</p>
+    <p><strong>The alternator</strong> is the part that actually makes electricity while the engine runs, using the engine's spinning motion to generate power — refilling the battery's bucket as you drive.</p>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .lbl { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; fill: #F3EFE6; }
+            .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #8A8477; }
+          </style>
+        </defs>
+        <rect x="30" y="60" width="110" height="70" rx="8" fill="#302D27" stroke="#F2A33C" stroke-width="2"/>
+        <text x="85" y="100" text-anchor="middle" class="lbl">Battery</text>
+        <text x="85" y="145" text-anchor="middle" class="sub">stores power</text>
+
+        <path d="M140 95 L 260 95" stroke="#F2A33C" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="260" y="60" width="110" height="70" rx="8" fill="#302D27" stroke="#F2A33C" stroke-width="2"/>
+        <text x="315" y="100" text-anchor="middle" class="lbl">Starter</text>
+        <text x="315" y="145" text-anchor="middle" class="sub">spins the engine</text>
+
+        <path d="M370 95 L 490 95" stroke="#F2A33C" stroke-width="2" marker-end="url(#arrow)"/>
+        <rect x="490" y="60" width="110" height="70" rx="8" fill="#302D27" stroke="#4A9B8E" stroke-width="2"/>
+        <text x="545" y="100" text-anchor="middle" class="lbl">Alternator</text>
+        <text x="545" y="145" text-anchor="middle" class="sub">refills battery</text>
+
+        <path d="M545 130 C 545 175, 85 175, 85 130" stroke="#4A9B8E" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#F2A33C"/>
+          </marker>
+          <marker id="arrow-teal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#4A9B8E"/>
+          </marker>
+        </defs>
+      </svg>
+      <p class="diagram-caption">The loop: battery powers the starter, the engine runs, the alternator refills the battery.</p>
+    </div>
+
+    <h2>What Happens When You Turn the Key</h2>
+    <ol>
+      <li>The battery sends a burst of power to the starter motor.</li>
+      <li>The starter spins the engine fast enough for it to "catch" and start running on its own combustion.</li>
+      <li>Once running, the alternator takes over — generating electricity to power everything and recharge the battery.</li>
+      <li>The battery goes back to standby, topped off and ready for next time.</li>
+    </ol>
+
+    <div class="callout">
+      <span class="callout-label">Why this matters</span>
+      <p>If your battery is dead, the starter has no power to spin the engine — which is why a car with a dead battery won't start even though the engine itself is perfectly fine. It's not the engine that's broken; it's the power supply to get it going.</p>
+    </div>
+
+    <h2>What's a Circuit?</h2>
+    <p>Electricity only flows in a complete loop, called a circuit. Power leaves the battery, travels through a wire to do a job (like lighting a headlight), and travels back to the battery through another wire. Break that loop anywhere — a loose wire, a dead battery, a blown fuse — and the electricity stops flowing, just like a race track with a section missing.</p>
+
+    <div class="activity-box">
+      <div class="activity-label">✏️ Try this — no equipment needed</div>
+      <p>Draw the loop: battery → starter → engine running → alternator → back to battery. Add arrows showing which direction the power flows at each stage. Then label one thing in your house that runs on a battery and explain what would happen if that battery died.</p>
+    </div>
+
+  </div>
+</main>
+
+<section class="quiz-section">
+  <div class="wrap">
+    <div class="quiz-header"><h2>Quick Check</h2></div>
+    <p class="quiz-sub">4 questions. Takes about 2 minutes.</p>
+    <div id="quiz-app"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="module-footer-nav">
+    <a href="module-1.html">← How an Engine Actually Works</a>
+    <a href="module-3.html">Next: Gas vs. Electric →</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script>
+  const QUIZ_DATA = {
+    moduleId: "module-2",
+    moduleTitle: "The Car's Nervous System",
+    questions: [
+      {
+        text: "What is the battery's actual job in the system?",
+        options: [
+          "It generates all the car's electricity while driving",
+          "It stores electricity, ready to be used",
+          "It spins the engine directly",
+          "It only powers the radio"
+        ],
+        correct: 1,
+        explain: "The battery stores power — it doesn't generate electricity on its own, it's more like a bucket holding water."
+      },
+      {
+        text: "What does the starter motor do?",
+        options: [
+          "Generates electricity while the car drives",
+          "Stores backup power",
+          "Gives the engine its first spin so it can start running",
+          "Controls the headlights"
+        ],
+        correct: 2,
+        explain: "The starter is a small motor that spins the engine just enough to get it running on its own."
+      },
+      {
+        text: "Once the engine is running, what takes over recharging the battery?",
+        options: [
+          "The starter motor",
+          "The alternator",
+          "The exhaust system",
+          "Nothing — the battery isn't recharged while driving"
+        ],
+        correct: 1,
+        explain: "The alternator uses the engine's motion to generate electricity and refill the battery while you drive."
+      },
+      {
+        text: "Why won't a car start if the battery is completely dead?",
+        options: [
+          "Because the engine itself is broken",
+          "Because there's no power to run the starter motor",
+          "Because the alternator stops working",
+          "Because the tires lose air"
+        ],
+        correct: 1,
+        explain: "Without battery power, the starter can't spin the engine — even if the engine itself is fine."
+      }
+    ]
+  };
+</script>
+<script src="../quiz.js"></script>
+
+</body>
+</html>

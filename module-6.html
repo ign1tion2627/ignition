@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 6: Final Design Challenge — Ignition</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="../index.html" class="brand"><span class="brand-spark"></span> Ignition</a>
+    <div class="nav-links"><a href="../index.html">All modules</a></div>
+  </div>
+</nav>
+
+<header class="module-header">
+  <div class="wrap">
+    <div class="module-crumb"><a href="../index.html">Modules</a> / Module 6 of 6</div>
+    <h1>Final Design Challenge</h1>
+    <p class="tagline">Everything you've learned, applied to one real engineering problem. No equipment needed — just your brain and a pencil.</p>
+  </div>
+</header>
+
+<main class="lesson">
+  <div class="wrap">
+
+    <h2>The Challenge</h2>
+    <p>A small town has a road with a sharp, sudden bump right before a stop sign — cars that hit it too fast get jolted hard, and a few have even lost control briefly. The town doesn't have the budget to repave the whole road right now. They've asked you, an engineer, to propose a solution.</p>
+
+    <div class="callout">
+      <span class="callout-label">Your job</span>
+      <p>Design a solution using what you've learned about suspension, braking, shape, or road design. There's no single right answer — the goal is to think like an engineer: identify the problem clearly, propose a solution, and explain why it would work.</p>
+    </div>
+
+    <h2>How to Approach It</h2>
+    <ol>
+      <li><strong>Define the real problem.</strong> Is it the bump itself, how fast cars are going over it, how suspension responds to it, or something else? Engineers often find that the real problem is more specific than it first sounds.</li>
+      <li><strong>Brainstorm at least 3 different solutions.</strong> They can be about the road, the cars, warning signs, speed control — anything. Don't judge them yet, just get ideas down.</li>
+      <li><strong>Pick your best idea and sketch it.</strong> A simple drawing is enough — labels matter more than artistic skill.</li>
+      <li><strong>Explain your reasoning.</strong> Why does this solution work? What engineering concept from this course does it rely on?</li>
+      <li><strong>Consider a trade-off.</strong> Every engineering solution costs something — money, time, comfort, or convenience. What's the trade-off of your solution, and is it worth it?</li>
+    </ol>
+
+    <div class="activity-box">
+      <div class="activity-label">✏️ The main activity — write this out</div>
+      <p>On paper, write out your full response to the 5 steps above. Aim for at least one full paragraph explaining your chosen solution and one sentence naming its trade-off. There's no need to submit this anywhere — it's yours to keep, and it's the kind of thinking real engineers do every day.</p>
+    </div>
+
+    <h2>A Few Directions to Consider</h2>
+    <p>If you're stuck, here are a few angles other students have used to think through problems like this one — not answers, just starting points: something about how a car's suspension responds to sudden bumps, something about driver visibility and warning signs before the bump, something about the actual shape or slope of the bump itself, or something about speed near the stop sign.</p>
+
+    <div class="callout">
+      <span class="callout-label">You finished the course</span>
+      <p>You've now gone through how engines work, how electricity flows through a car, how gas and electric vehicles compare, how shape affects performance, and how brakes and safety systems protect people — and applied all of it to a real design problem. That's the same core thinking process real automotive engineers use every day.</p>
+    </div>
+
+  </div>
+</main>
+
+<section class="quiz-section">
+  <div class="wrap">
+    <div class="quiz-header"><h2>Wrap-Up Check</h2></div>
+    <p class="quiz-sub">4 questions pulling from the whole course. Takes about 3 minutes.</p>
+    <div id="quiz-app"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="module-footer-nav">
+    <a href="module-5.html">← Brakes, Suspension & Safety</a>
+    <a href="../index.html">Back to all modules →</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script>
+  const QUIZ_DATA = {
+    moduleId: "module-6",
+    moduleTitle: "Final Design Challenge",
+    questions: [
+      {
+        text: "In good engineering problem-solving, what should come before brainstorming solutions?",
+        options: [
+          "Picking whichever idea sounds coolest",
+          "Clearly defining what the real problem actually is",
+          "Building a prototype immediately",
+          "Asking someone else to solve it"
+        ],
+        correct: 1,
+        explain: "Engineers define the real problem clearly first — the actual issue is often more specific than it first appears."
+      },
+      {
+        text: "Which module's concept would be most directly useful for redesigning how a car handles the bump itself?",
+        options: [
+          "Module 2: Electrical Systems",
+          "Module 3: Gas vs. Electric",
+          "Module 5: Suspension",
+          "Module 1: Horsepower"
+        ],
+        correct: 2,
+        explain: "Suspension is specifically about how a car absorbs bumps in the road — directly relevant to this problem."
+      },
+      {
+        text: "Why does every engineering solution involve a trade-off?",
+        options: [
+          "Because engineers are being lazy",
+          "Because improving one thing (cost, speed, comfort, safety) usually affects another",
+          "Trade-offs don't actually exist in real engineering",
+          "Because there's always a perfect solution with no downsides"
+        ],
+        correct: 1,
+        explain: "Real engineering involves balancing competing factors — improving one thing often comes at some cost to another."
+      },
+      {
+        text: "What's the point of sketching a solution, even if you're not an artist?",
+        options: [
+          "It's not useful — only the words matter",
+          "It forces you to think through the specific details of how your solution actually works",
+          "It's required by law for all engineering",
+          "It replaces the need for any written explanation"
+        ],
+        correct: 1,
+        explain: "A sketch — even a rough one — forces concrete thinking about how a solution actually functions, not just a vague idea."
+      }
+    ]
+  };
+</script>
+<script src="../quiz.js"></script>
+
+</body>
+</html>

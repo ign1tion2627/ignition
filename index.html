@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ignition — Learn how cars actually work</title>
+<meta name="description" content="A free, self-paced course in automotive engineering — how engines, electric motors, brakes, and more actually work." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand"><span class="brand-spark"></span> Ignition</div>
+    <div class="nav-links">
+      <a href="#modules">Modules</a>
+      <a href="#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Free · self-paced · no equipment needed</div>
+    <h1>Learn how cars<br><em>actually</em> work.</h1>
+    <p class="hero-sub">
+      Six short lessons on engines, electrical systems, electric vehicles, aerodynamics,
+      and safety — built for curious minds, whether you're ten years old or seventeen.
+      No car, no toolbox, no experience required.
+    </p>
+    <div class="hero-actions">
+      <a href="modules/module-1.html" class="btn btn-primary">Start Module 1 →</a>
+      <a href="#modules" class="btn btn-ghost">See all modules</a>
+    </div>
+    <p class="hero-note">Takes about 20–25 minutes per module. Come back anytime — your progress is saved as you go.</p>
+  </div>
+</header>
+
+<main>
+  <section class="wrap" id="modules">
+    <p class="section-label">The course — 6 modules</p>
+    <div class="module-grid" id="module-grid">
+
+      <a href="modules/module-1.html" class="module-card" data-module="module-1">
+        <div class="module-top">
+          <span class="module-num">01</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>How an Engine Actually Works</h3>
+        <p>What's really happening inside a cylinder, and what "horsepower" actually means.</p>
+        <div class="module-meta"><span>~20 min</span><span>4 questions</span></div>
+      </a>
+
+      <a href="modules/module-2.html" class="module-card" data-module="module-2">
+        <div class="module-top">
+          <span class="module-num">02</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>The Car's Nervous System</h3>
+        <p>How the battery, alternator, and starter work together every time you turn the key.</p>
+        <div class="module-meta"><span>~20 min</span><span>4 questions</span></div>
+      </a>
+
+      <a href="modules/module-3.html" class="module-card" data-module="module-3">
+        <div class="module-top">
+          <span class="module-num">03</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>Gas vs. Electric</h3>
+        <p>What's actually different about an EV — and why it feels different to drive.</p>
+        <div class="module-meta"><span>~20 min</span><span>4 questions</span></div>
+      </a>
+
+      <a href="modules/module-4.html" class="module-card" data-module="module-4">
+        <div class="module-top">
+          <span class="module-num">04</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>Why Shape Matters</h3>
+        <p>Drag, downforce, and why a race car and a minivan look nothing alike.</p>
+        <div class="module-meta"><span>~20 min</span><span>4 questions</span></div>
+      </a>
+
+      <a href="modules/module-5.html" class="module-card" data-module="module-5">
+        <div class="module-top">
+          <span class="module-num">05</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>Brakes, Suspension &amp; Safety</h3>
+        <p>How a two-ton car stops on command, and why "crumpling" is actually the point.</p>
+        <div class="module-meta"><span>~20 min</span><span>4 questions</span></div>
+      </a>
+
+      <a href="modules/module-6.html" class="module-card" data-module="module-6">
+        <div class="module-top">
+          <span class="module-num">06</span>
+          <span class="module-status">✓ Completed</span>
+        </div>
+        <h3>Design Challenge</h3>
+        <p>Put it all together: design your own solution to a real engineering problem.</p>
+        <div class="module-meta"><span>~30 min</span><span>Design brief</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="wrap" id="about" style="padding-bottom: 60px;">
+    <p class="section-label">About this course</p>
+    <p style="color: var(--steel-light); max-width: 640px; font-size: 1.02rem;">
+      Ignition is a free course built to make automotive engineering make sense —
+      no jargon, no assumptions about what you already know. Every lesson is written
+      to be read on its own, worked through at your own pace, and revisited anytime.
+      It's free for any student or classroom to use.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Ignition — a free automotive engineering course. Built independently, shared openly.</p>
+  </div>
+</footer>
+
+<script>
+  // Mark modules complete based on local progress tracking
+  try {
+    const done = JSON.parse(localStorage.getItem("ignition_done_modules") || "[]");
+    done.forEach((id) => {
+      const card = document.querySelector(`.module-card[data-module="${id}"]`);
+      if (card) card.querySelector(".module-status").classList.add("done");
+    });
+  } catch (e) {}
+</script>
+
+</body>
+</html>

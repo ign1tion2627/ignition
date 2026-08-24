@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 1: How an Engine Actually Works — Ignition</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="../index.html" class="brand"><span class="brand-spark"></span> Ignition</a>
+    <div class="nav-links"><a href="../index.html">All modules</a></div>
+  </div>
+</nav>
+
+<header class="module-header">
+  <div class="wrap">
+    <div class="module-crumb"><a href="../index.html">Modules</a> / Module 1 of 6</div>
+    <h1>How an Engine Actually Works</h1>
+    <p class="tagline">What's really happening inside those metal cylinders under the hood — and what "horsepower" actually means.</p>
+  </div>
+</header>
+
+<main class="lesson">
+  <div class="wrap">
+
+    <h2>The Big Idea</h2>
+    <p>A car engine's whole job is simple: turn a tiny explosion into a spinning wheel. That's it. Everything else is just the clever machinery that makes that happen thousands of times a minute.</p>
+
+    <p>Most car engines burn a mix of gasoline and air inside metal tubes called <strong>cylinders</strong>. Each explosion pushes a piston, and that push eventually spins the wheels. A typical car engine has 4, 6, or 8 of these cylinders firing in a careful sequence, over and over, every second you're driving.</p>
+
+    <div class="callout">
+      <span class="callout-label">Think of it like this</span>
+      <p>A cylinder is like a tiny cannon that fires hundreds of times a minute — except instead of shooting a cannonball out, it pushes a piston down, and that piston is connected to the wheels.</p>
+    </div>
+
+    <h2>The Four Strokes</h2>
+    <p>Most engines work in a repeating 4-step cycle. Each step is called a "stroke," because the piston moves up or down once per step.</p>
+
+    <ol>
+      <li><strong>Intake</strong> — the piston moves down, pulling a mix of air and fuel into the cylinder.</li>
+      <li><strong>Compression</strong> — the piston moves back up, squeezing that air-fuel mix into a tiny space.</li>
+      <li><strong>Combustion</strong> — a spark plug ignites the compressed mix. It explodes, slamming the piston back down with force.</li>
+      <li><strong>Exhaust</strong> — the piston moves up one more time, pushing the leftover gas out through the exhaust pipe.</li>
+    </ol>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .cyl-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; fill: #C7C2B4; }
+            .cyl-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; fill: #F3EFE6; }
+          </style>
+        </defs>
+        <!-- 4 cylinder diagrams -->
+        <g transform="translate(20,20)">
+          <rect x="30" y="20" width="80" height="140" rx="4" fill="none" stroke="#8A8477" stroke-width="2"/>
+          <rect x="42" y="100" width="56" height="50" rx="2" fill="#F2A33C"/>
+          <line x1="30" y1="60" x2="110" y2="60" stroke="#8A8477" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="70" y="185" text-anchor="middle" class="cyl-title">1. Intake</text>
+          <text x="70" y="202" text-anchor="middle" class="cyl-label">air + fuel in</text>
+        </g>
+        <g transform="translate(180,20)">
+          <rect x="30" y="20" width="80" height="140" rx="4" fill="none" stroke="#8A8477" stroke-width="2"/>
+          <rect x="42" y="40" width="56" height="30" rx="2" fill="#F2A33C"/>
+          <line x1="30" y1="60" x2="110" y2="60" stroke="#8A8477" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="70" y="185" text-anchor="middle" class="cyl-title">2. Compress</text>
+          <text x="70" y="202" text-anchor="middle" class="cyl-label">squeezed tight</text>
+        </g>
+        <g transform="translate(340,20)">
+          <rect x="30" y="20" width="80" height="140" rx="4" fill="none" stroke="#8A8477" stroke-width="2"/>
+          <rect x="42" y="100" width="56" height="50" rx="2" fill="#FF6B35"/>
+          <circle cx="70" cy="45" r="10" fill="#FF6B35" opacity="0.6"/>
+          <text x="70" y="185" text-anchor="middle" class="cyl-title">3. Combustion</text>
+          <text x="70" y="202" text-anchor="middle" class="cyl-label">spark ignites it</text>
+        </g>
+        <g transform="translate(500,20)">
+          <rect x="30" y="20" width="80" height="140" rx="4" fill="none" stroke="#8A8477" stroke-width="2"/>
+          <rect x="42" y="40" width="56" height="30" rx="2" fill="#8A8477"/>
+          <line x1="30" y1="60" x2="110" y2="60" stroke="#8A8477" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="70" y="185" text-anchor="middle" class="cyl-title">4. Exhaust</text>
+          <text x="70" y="202" text-anchor="middle" class="cyl-label">gas pushed out</text>
+        </g>
+      </svg>
+      <p class="diagram-caption">The four-stroke cycle, repeated hundreds of times per minute in every cylinder.</p>
+    </div>
+
+    <h2>What "Horsepower" Actually Means</h2>
+    <p>You've heard the word a thousand times, but here's what it really is: horsepower is a measurement of how quickly an engine can do work. It comes from over 200 years ago, when engineers needed a way to compare a steam engine's power to the horses it was replacing.</p>
+
+    <p>One horsepower is roughly the amount of power it takes to lift 550 pounds one foot in one second. A modern car engine might produce 150–300 horsepower — meaning it can do that same lift 150 to 300 times over, every second.</p>
+
+    <div class="callout">
+      <span class="callout-label">And torque?</span>
+      <p>Torque is the twisting force the engine produces — the push that actually gets the wheels turning. Horsepower tells you how fast the engine can work; torque tells you how hard it can push. A truck needs high torque to tow heavy loads; a race car needs high horsepower to reach top speed quickly.</p>
+    </div>
+
+    <div class="activity-box">
+      <div class="activity-label">✏️ Try this — no equipment needed</div>
+      <p>Grab a pen and paper. Draw your own version of the four-stroke cycle from memory, using simple boxes and arrows. Label each stroke in your own words — not the textbook words, your words. If you can explain it to a friend without looking, you've got it.</p>
+    </div>
+
+  </div>
+</main>
+
+<section class="quiz-section">
+  <div class="wrap">
+    <div class="quiz-header">
+      <h2>Quick Check</h2>
+    </div>
+    <p class="quiz-sub">4 questions. Takes about 2 minutes.</p>
+    <div id="quiz-app"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="module-footer-nav">
+    <a href="../index.html">← Back to all modules</a>
+    <a href="module-2.html">Next: The Car's Nervous System →</a>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script>
+  const QUIZ_DATA = {
+    moduleId: "module-1",
+    moduleTitle: "How an Engine Actually Works",
+    questions: [
+      {
+        text: "What are the four strokes of the engine cycle, in order?",
+        options: [
+          "Combustion, Intake, Exhaust, Compression",
+          "Intake, Compression, Combustion, Exhaust",
+          "Exhaust, Combustion, Intake, Compression",
+          "Compression, Exhaust, Intake, Combustion"
+        ],
+        correct: 1,
+        explain: "The correct order is Intake (air+fuel in), Compression (squeezed), Combustion (spark ignites it), Exhaust (gas pushed out)."
+      },
+      {
+        text: "What actually causes the piston to move down with force?",
+        options: [
+          "The exhaust pipe pulling it",
+          "A small explosion from the spark plug igniting the fuel mix",
+          "The car's wheels spinning it",
+          "Compressed air alone, with no spark"
+        ],
+        correct: 1,
+        explain: "The spark plug ignites the compressed air-fuel mix, and that small explosion is what forces the piston down."
+      },
+      {
+        text: "Horsepower is best described as a measurement of:",
+        options: [
+          "How loud the engine is",
+          "How many cylinders the engine has",
+          "How quickly the engine can do work",
+          "How much fuel the engine uses"
+        ],
+        correct: 2,
+        explain: "Horsepower measures how quickly an engine can do work — not loudness, cylinder count, or fuel use directly."
+      },
+      {
+        text: "What's the difference between horsepower and torque?",
+        options: [
+          "They're the same thing with different names",
+          "Torque is how fast the engine works; horsepower is how hard it pushes",
+          "Horsepower is how fast the engine can work; torque is the twisting push that turns the wheels",
+          "Torque only matters for electric cars"
+        ],
+        correct: 2,
+        explain: "Horsepower measures speed of work; torque measures the twisting force that gets the wheels turning."
+      }
+    ]
+  };
+</script>
+<script src="../quiz.js"></script>
+
+</body>
+</html>
