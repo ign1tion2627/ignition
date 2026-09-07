@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Ignition — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .dash-header { padding: 48px 0 28px; border-bottom: 1px solid var(--line); }
+  .dash-header h1 { font-family: var(--font-display); font-size: 2rem; margin: 0 0 8px; }
+  .dash-header p { color: var(--steel); font-size: 0.92rem; margin: 0; }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin: 36px 0 48px;
+  }
+  @media (max-width: 720px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+  .stat-card {
+    background: var(--charcoal-soft); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px;
+  }
+  .stat-num {
+    font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; color: var(--amber);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--steel); margin-top: 8px;
+  }
+
+  .funnel { margin-bottom: 56px; }
+  .funnel-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+  }
+  .funnel-label {
+    width: 220px; flex-shrink: 0; font-size: 0.88rem; color: var(--steel-light);
+  }
+  .funnel-bar-track {
+    flex: 1; background: var(--charcoal-soft); border-radius: 6px; height: 26px;
+    position: relative; overflow: hidden; border: 1px solid var(--line);
+  }
+  .funnel-bar-fill {
+    background: linear-gradient(90deg, var(--amber-deep), var(--amber));
+    height: 100%; border-radius: 6px 0 0 6px;
+    display: flex; align-items: center; justify-content: flex-end; padding-right: 8px;
+    transition: width 0.5s ease;
+    min-width: 2px;
+  }
+  .funnel-bar-fill span {
+    font-family: var(--font-mono); font-size: 0.72rem; color: #1C1B1A; font-weight: 600;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 56px; }
+  th, td {
+    text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line);
+    font-size: 0.88rem; color: var(--steel-light);
+  }
+  th {
+    font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--steel);
+  }
+  td.name { color: var(--paper); font-weight: 500; }
+
+  .empty-state, .error-state {
+    text-align: center; padding: 60px 20px; color: var(--steel);
+  }
+  .error-state { color: var(--spark); }
+
+  .refresh-btn { margin-bottom: 24px; }
+  .loading-msg { color: var(--steel); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand"><span class="brand-spark"></span> Ignition</a>
+    <div class="nav-links"><a href="index.html">Course</a></div>
+  </div>
+</nav>
+
+<header class="dash-header">
+  <div class="wrap-wide">
+    <h1>Dashboard</h1>
+    <p>Completion data pulled live from Supabase. This page isn't linked from the course — bookmark it for your own records.</p>
+  </div>
+</header>
+
+<main class="wrap-wide" style="padding-top: 32px;">
+  <button class="btn btn-ghost refresh-btn" id="refresh-btn">↻ Refresh data</button>
+  <div id="dash-content">
+    <p class="loading-msg">Loading completion data…</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap-wide"><p>Ignition — internal dashboard, not for public sharing.</p></div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const MODULE_TITLES = {
+  "module-1": "1 — How an Engine Actually Works",
+  "module-2": "2 — The Car's Nervous System",
+  "module-3": "3 — Gas vs. Electric",
+  "module-4": "4 — Why Shape Matters",
+  "module-5": "5 — Brakes, Suspension & Safety",
+  "module-6": "6 — Final Design Challenge",
+};
+const MODULE_ORDER = ["module-1", "module-2", "module-3", "module-4", "module-5", "module-6"];
+
+async function loadDashboard() {
+  const content = document.getElementById("dash-content");
+  content.innerHTML = '<p class="loading-msg">Loading completion data…</p>';
+
+  const hasSupabase =
+    typeof SUPABASE_URL !== "undefined" &&
+    typeof SUPABASE_ANON_KEY !== "undefined" &&
+    SUPABASE_URL.indexOf("YOUR_SUPABASE") === -1 &&
+    typeof supabase !== "undefined";
+
+  if (!hasSupabase) {
+    content.innerHTML = `
+      <div class="error-state">
+        Supabase isn't configured yet in <code>config.js</code>.<br>
+        Add your project URL and anon key, then refresh this page.
+      </div>`;
+    return;
+  }
+
+  try {
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const { data, error } = await client
+      .from("completions")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      content.innerHTML = `<div class="empty-state">No completions recorded yet. Once students start finishing modules, their results will show up here.</div>`;
+      return;
+    }
+
+    renderDashboard(data);
+  } catch (err) {
+    console.error(err);
+    content.innerHTML = `<div class="error-state">Couldn't load data from Supabase. Check that your table and policies are set up as described in SETUP.md, and that config.js has the correct project URL and key.</div>`;
+  }
+}
+
+function renderDashboard(rows) {
+  const content = document.getElementById("dash-content");
+
+  const uniqueStudents = new Set(rows.map((r) => (r.student_name || "").trim().toLowerCase())).size;
+  const uniqueSchools = new Set(
+    rows.filter((r) => r.school && r.school.trim()).map((r) => r.school.trim().toLowerCase())
+  ).size;
+  const totalCompletions = rows.length;
+  const fullCourseFinishers = countFullCourseFinishers(rows);
+
+  const perModule = {};
+  MODULE_ORDER.forEach((id) => (perModule[id] = 0));
+  rows.forEach((r) => {
+    if (perModule[r.module_id] !== undefined) perModule[r.module_id]++;
+  });
+  const maxCount = Math.max(1, ...Object.values(perModule));
+
+  const recentRows = rows.slice(0, 25);
+
+  content.innerHTML = `
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">${totalCompletions}</div>
+        <div class="stat-label">Total module completions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${uniqueStudents}</div>
+        <div class="stat-label">Unique students</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${uniqueSchools}</div>
+        <div class="stat-label">Schools represented</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">${fullCourseFinishers}</div>
+        <div class="stat-label">Finished all 6 modules</div>
+      </div>
+    </div>
+
+    <p class="section-label">Completions by module</p>
+    <div class="funnel">
+      ${MODULE_ORDER.map((id) => {
+        const count = perModule[id];
+        const pct = Math.max(4, Math.round((count / maxCount) * 100));
+        return `
+          <div class="funnel-row">
+            <div class="funnel-label">${MODULE_TITLES[id]}</div>
+            <div class="funnel-bar-track">
+              <div class="funnel-bar-fill" style="width:${pct}%"><span>${count}</span></div>
+            </div>
+          </div>`;
+      }).join("")}
+    </div>
+
+    <p class="section-label">Recent submissions</p>
+    <table>
+      <thead>
+        <tr><th>Student</th><th>School</th><th>Module</th><th>Score</th><th>Date</th></tr>
+      </thead>
+      <tbody>
+        ${recentRows
+          .map(
+            (r) => `
+          <tr>
+            <td class="name">${escapeHtml(r.student_name || "—")}</td>
+            <td>${escapeHtml(r.school || "—")}</td>
+            <td>${escapeHtml(MODULE_TITLES[r.module_id] || r.module_id)}</td>
+            <td>${r.score}/${r.total_questions}</td>
+            <td>${formatDate(r.created_at)}</td>
+          </tr>`
+          )
+          .join("")}
+      </tbody>
+    </table>
+    ${rows.length > 25 ? `<p class="loading-msg">Showing 25 most recent of ${rows.length} total submissions.</p>` : ""}
+  `;
+}
+
+function countFullCourseFinishers(rows) {
+  const byStudent = {};
+  rows.forEach((r) => {
+    const key = (r.student_name || "").trim().toLowerCase();
+    if (!key) return;
+    if (!byStudent[key]) byStudent[key] = new Set();
+    byStudent[key].add(r.module_id);
+  });
+  return Object.values(byStudent).filter((set) => MODULE_ORDER.every((m) => set.has(m))).length;
+}
+
+function formatDate(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+document.getElementById("refresh-btn").addEventListener("click", loadDashboard);
+loadDashboard();
+</script>
+
+</body>
+</html>
